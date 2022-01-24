@@ -1,0 +1,28 @@
+envs:
+  dev: &dev
+    source:
+      hostname: "172.168.2.1"
+      port: 27017
+      database: "my_mongodb-dev"
+      conn_creds:
+        username: FROM_VAULT/ FROM_AIRFLOW
+        password: FROM_VAULT/ FROM_AIRFLOW
+    target:
+      hostname: "xxxx.xxxx.xx.x"
+      port: 4387
+      database: "my_redshift_database"
+      conn_creds:
+        username: FROM_VAULT/ FROM_AIRFLOW
+        password: FROM_VAULT/ FROM_AIRFLOW
+    source_target:
+      source.collection1: target.table1
+      source.collection2: target.table2
+      source.collection3: target.table3
+      source.collection4: target.table4
+      source.collection5: target.table5
+
+  preprod: *dev
+  prod: *dev
+
+
+
